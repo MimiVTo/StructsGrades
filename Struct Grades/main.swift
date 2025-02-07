@@ -144,9 +144,9 @@ func gradeOfStudent(){
     if let studentName = readLine(){
         for i in studentArray.indices{
             //if it's the same as the name in the array, print the final score for that student
-            if studentName == studentArray.fullNames[i]{
-                print(studentArray.fullNames[i] + "'s grades are:")
-                print(finalScore[i])
+            if studentName == studentArray[i].fullNames{
+                print(studentArray[i].fullNames + "'s grades are:")
+                print(studentArray[i].finalScore)
             }
         }
     }
@@ -157,11 +157,11 @@ func allGradesForStudent(){
     print("Which student would you like to choose?")
     
     if let studentName = readLine(){
-        for i in names.indices{
+        for i in studentArray.indices{
             //if it's the same as the name in the array, print the assignment scores of that student
-            if studentName == names[i]{
-                print(names[i] + "'s grades are:")
-                print(studentScores[i])
+            if studentName == studentArray[i].fullNames{
+                print(studentArray[i].fullNames + "'s grades are:")
+                print(studentArray[i].studentScores)
             }
         }
     }
@@ -169,8 +169,8 @@ func allGradesForStudent(){
 }
 
 func allStudentGrades(){
-    for i in names.indices{
-        print(names[i] + "'s grades are: \(studentScores[i])")
+    for i in studentArray.indices{
+        print(studentArray[i].fullNames + "'s grades are: \(studentArray[i].studentScores)")
     }
     
     menu()
@@ -179,7 +179,7 @@ func allStudentGrades(){
 func averGradesForClass(){
     var sum: Double = 0.0
     
-    for i in finalScore.indices{
+    for i in studentArray.indices{
         sum += finalScore[i]
     }
     
