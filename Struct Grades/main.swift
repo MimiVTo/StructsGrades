@@ -180,10 +180,10 @@ func averGradesForClass(){
     var sum: Double = 0.0
     
     for i in studentArray.indices{
-        sum += finalScore[i]
+        sum += studentArray[i].finalScore
     }
     
-    let doubleStr = String(format: "%.2f", (sum/Double(finalScore.count)))
+    let doubleStr = String(format: "%.2f", (sum/Double(studentArray.count)))
     
     print(doubleStr)
     
@@ -198,17 +198,23 @@ func averGradeForAssignment(){
         
         var sum: Double = 0
         
-        for i in studentScores.indices{
-            for j in studentScores[i].indices{
-                if j == assignmentNumber{
-                    if let theGrade = Double(studentScores[i][j-1]){
-                        sum += theGrade
-                    }
-                }
+        for i in studentArray.indices{
+            if let theGrade = Double(studentArray[i].studentScores[assignmentNumber-1]){
+                sum += theGrade
             }
         }
+
+//        for i in studentArray.indices{
+//            for j in studentArray[i].studentScores.indices{
+//                if j == assignmentNumber{
+//                    if let theGrade = Double(studentArray[i){
+//                        sum += theGrade
+//                    }
+//                }
+//            }
+//        }
         
-        let doubleStr = String(format: "%.2f", (sum/Double(studentScores.count)))
+        let doubleStr = String(format: "%.2f", (sum/Double(studentArray.count)))
         
         print ("The average for assignment #\(assignmentNumber) is: \(doubleStr)")
     }
@@ -218,13 +224,13 @@ func averGradeForAssignment(){
 
 func lowestGradeForClass(){
     
-    var lowest = finalScore[0]
-    var whoLowest = names[0]
+    var lowest = studentArray[0].finalScore
+    var whoLowest = studentArray[0].fullNames
     
-    for i in finalScore.indices{
-        if finalScore[i] <= lowest{
-            lowest = finalScore[i]
-            whoLowest = names[i]
+    for i in studentArray.indices{
+        if studentArray[i].finalScore <= lowest{
+            lowest = studentArray[i].finalScore
+            whoLowest = studentArray[i].fullNames
         }
     }
     
@@ -235,13 +241,13 @@ func lowestGradeForClass(){
 
 func highestGradeForClass(){
     
-    var highest = finalScore[0]
-    var whoHighest = names[0]
+    var highest = studentArray[0].finalScore
+    var whoHighest = studentArray[0].fullNames
     
-    for i in finalScore.indices{
-        if finalScore[i] >= highest{
-            highest = finalScore[i]
-            whoHighest = names[i]
+    for i in studentArray.indices{
+        if studentArray[i].finalScore >= highest{
+            highest = studentArray[i].finalScore
+            whoHighest = studentArray[i].fullNames
         }
     }
     
@@ -259,13 +265,12 @@ func filterStudents(){
         print("Enter the high range you would like to use:")
         
         if let highRange = readLine(), let highNum = Double(highRange){
-            for i in finalScore.indices{
-                if finalScore[i] >= lowNum && finalScore[i] <= highNum{
-                    print("\(names[i]): \(finalScore[i])")
+            for i in studentArray.indices{
+                if studentArray[i].finalScore >= lowNum && studentArray[i].finalScore <= highNum{
+                    print("\(studentArray[i].fullNames): \(studentArray[i].finalScore)")
                 }
             }
         }
-        
     }
     
     menu()
@@ -274,3 +279,5 @@ func filterStudents(){
 func Quit(){
     print("Have a great rest of your day!")
 }
+
+
