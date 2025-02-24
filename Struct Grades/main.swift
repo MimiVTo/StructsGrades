@@ -169,6 +169,8 @@ func allGradesForStudent(){
 }
 
 func allStudentGrades(){
+    
+    //send all grades
     for i in studentArray.indices{
         print(studentArray[i].fullNames + "'s grades are: \(studentArray[i].studentScores)")
     }
@@ -179,10 +181,13 @@ func allStudentGrades(){
 func averGradesForClass(){
     var sum: Double = 0.0
     
+    //Adds all the final grades
+    
     for i in studentArray.indices{
         sum += studentArray[i].finalScore
     }
     
+    //Divides and prints
     let doubleStr = String(format: "%.2f", (sum/Double(studentArray.count)))
     
     print(doubleStr)
