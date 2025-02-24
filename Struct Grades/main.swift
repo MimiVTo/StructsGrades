@@ -223,10 +223,12 @@ func averGradeForAssignment(){
 }
 
 func lowestGradeForClass(){
-    
+    //Setting variables for this
     var lowest = studentArray[0].finalScore
     var whoLowest = studentArray[0].fullNames
     
+    
+    //Checks for lowest
     for i in studentArray.indices{
         if studentArray[i].finalScore <= lowest{
             lowest = studentArray[i].finalScore
@@ -240,10 +242,11 @@ func lowestGradeForClass(){
 }
 
 func highestGradeForClass(){
-    
+    //Setting variables for this
     var highest = studentArray[0].finalScore
     var whoHighest = studentArray[0].fullNames
     
+    //Checks for highest
     for i in studentArray.indices{
         if studentArray[i].finalScore >= highest{
             highest = studentArray[i].finalScore
@@ -257,13 +260,15 @@ func highestGradeForClass(){
 }
 
 func filterStudents(){
-    
+    //user gives range
     print("Enter the low range you would like to use:")
     
     if let lowRange = readLine(), let lowNum = Double(lowRange){
         
         print("Enter the high range you would like to use:")
         
+        
+        //prints out whoever is in the range
         if let highRange = readLine(), let highNum = Double(highRange){
             for i in studentArray.indices{
                 if studentArray[i].finalScore >= lowNum && studentArray[i].finalScore <= highNum{
